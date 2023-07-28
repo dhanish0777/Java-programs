@@ -1,0 +1,46 @@
+import java.util.Scanner;
+import java.io.*;
+public class binarysearch
+{
+    public static void main(String[] args)
+    {
+        int n,i,target;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the number of elements:");
+        n=sc.nextInt();
+        System.out.println("Enter the element to be found:");
+        target=sc.nextInt();
+        int[] arr=new int[n];
+        System.out.println("Enter the array elements:");
+        for(i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        int pos=search(arr,target,n);
+        System.out.println("Element "+target+" is found at position "+pos+1+".");
+    }
+    static int search(int a[],int target,int n)
+    {
+        int beg=0;
+        int end=n-1;
+        int mid;
+        while(beg<=end)
+        {
+            mid=(beg+end)/2;
+            if(target==a[mid])
+            {
+                return mid;
+            }
+            else if(target<a[mid])
+            {
+                end=mid-1;
+            }
+            else
+            {
+                beg=mid+1;
+            }
+        }
+        return -1;
+    }
+
+}
